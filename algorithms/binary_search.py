@@ -10,6 +10,8 @@ def binary_search(search_list: list, search_value) -> Optional[int]:
     :param search_list - a sorted list of elements.
     :param search_value - the value to search for in the search_list.
     :returns - the position the element exists in the array else, returns None.
+
+    Time Complexity - O(log(n))
     """
     low = 0
     high = len(search_list) - 1
@@ -24,7 +26,7 @@ def binary_search(search_list: list, search_value) -> Optional[int]:
         elif search_list[midpoint] > search_value:
             high = midpoint - 1
 
-    return midpoint
+    return None
 
 
 class TestBinarySearch(unittest.TestCase):
@@ -34,6 +36,9 @@ class TestBinarySearch(unittest.TestCase):
         self.assertEqual(binary_search(self.sorted_list, 1), 0)
         self.assertEqual(binary_search(self.sorted_list, 2), 1)
         self.assertEqual(binary_search(self.sorted_list, 5), 4)
+
+    def test_not_in_list(self):
+        self.assertIsNone(binary_search(self.sorted_list, 100))
 
 
 if __name__ == '__main__':
